@@ -1,8 +1,9 @@
-# Welcome Vidly
+# Welcome to Vidly
 
 -------------------------------
 
 this is my journey and testimony into Udemy course https://www.udemy.com/the-complete-aspnet-mvc-5-course/learn/v4
+
 
 Features:
 - Microsoft .NET 4.5.2 (download: https://www.microsoft.com/en-us/download/details.aspx?id=42642)
