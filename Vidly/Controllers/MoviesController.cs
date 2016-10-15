@@ -53,7 +53,7 @@ namespace Vidly.Controllers
             //return Content("Hello world!");
             //return HttpNotFound();
             //return new EmptyResult();
-            return RedirectToAction("Index", "Home", new { page = 1, sortBy = "name"});
+            //return RedirectToAction("Index", "Home", new { page = 1, sortBy = "name"});
         }
 
 
@@ -72,17 +72,21 @@ namespace Vidly.Controllers
 
 
         // movies
-        public ActionResult Index(int? pageIndex, string sortBy)
+        public ActionResult Index()
         {
-            if (!pageIndex.HasValue)
+            var movies = new List<Movie>
             {
-                pageIndex = 1;
-            }
-            if (String.IsNullOrWhiteSpace(sortBy))
+                new Movie { Id= 1, Name = "Shrek!" },
+                new Movie { Id= 2, Name = "Wall-e" }
+            };
+
+            var viewModel = new MoviesViewModel
             {
-                sortBy = "Name";
-            }
-            return Content(String.Format("pageIndex={0}&sortBy={1}", pageIndex, sortBy));
+                Movies = movies
+            };
+
+            return View(viewModel); // this is better approach
+
         }
 
 
@@ -105,6 +109,29 @@ namespace Vidly.Controllers
 
             return Content( year + "/" + month);
         }
+
+
+        public ActionResult Details(int Id)
+        {
+            var name = "";
+
+            if (Id != 1 && Id != 2)
+            {
+                return HttpNotFound();
+            }
+
+            name = Id == 1 ? "Shrek!" : "Wall-e";
+
+            var movie = new Movie() { Id = Id, Name = name };
+
+
+            var viewModel = new MoviesDetailsViewModel();
+
+            viewModel.Movie = movie;
+
+            return View(viewModel); // this is better approach
+        }
+
 
     }
 }
