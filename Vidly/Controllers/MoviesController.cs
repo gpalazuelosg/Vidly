@@ -71,6 +71,20 @@ namespace Vidly.Controllers
         }
 
 
+
+        /*
+         * ASP.NET MVC Attribute Route Constraints
+         Other constraints that can be added to regex conditions are:
+         min
+         max
+         minlength
+         maxlength
+         int
+         float
+         guid
+        */
+
+        [Route("movies/released/{year}/{month:regex(\\d{2}):range(1,12)}")]
         public ActionResult ByReleaseDate(int year, int month)
         {
 
