@@ -1,0 +1,67 @@
+annotation from Mosh's ASP.NET MVC course
+
+
+- enabled migrations from Package Manager Console, following command:
+	enable-migrations
+
+
+- then, run the initial migration with following command:
+	add-migration InitialModel	
+
+
+- in file "IdentityModels.cs", Class "ApplicationDbContext"
+	add the following line after Class declaration:
+
+	public DbSet<Customer> Customers { get; set; }
+
+	(for exercise i will Movies later)
+
+
+- then, run again the following command (from Package Manager Console):
+
+	add-migration InitialModel -force
+	
+	(with these, check the original files were overwritten including now the Customer table)
+	
+	
+- then run creation of database with following command:
+	update-database
+	
+	at this point, the web.config file has the following:
+	
+	  <connectionStrings>
+		<add name="DefaultConnection" connectionString="Data Source=(LocalDb)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\aspnet-Vidly-20161015020857.mdf;Initial Catalog=aspnet-Vidly-20161015020857;Integrated Security=True"
+		  providerName="System.Data.SqlClient" />
+	  </connectionStrings>
+
+
+- as an exercise to show what to steps to follow when modifying database tables structure, let's make a change adding new fields into Customer model, then run a new migration with following command:
+	
+	add-migration AddIsSubscribedToCustomer
+		then
+	update-database
+	
+	this creates a new set of .CS files inside the Migrations folder only containing this new addition; which in this case just adding the IsSubscribedToNewsletter field to Customer model class
+	AND
+	the second command, updates the entire database --- check this is an small migration, no errors expected.
+	
+
+- then, for the next change, a second model class was added (MembershipType) with some fields. This is a Type value in our model. So, a new migration is needed with the following command:
+
+	add-migration AddMembershipType
+		then
+	update-database
+	
+	with this commands, the migration files for MembershipType is added
+		AND
+	the database is updated again, more important: no errors as this was an small change to the model classes and tables
+
+
+- 
+
+
+
+	
+	
+	  
+	  
