@@ -6,3 +6,12 @@
 
 <h2>@Model.Customer.Name</h2>
 
+<ul>
+    <li>Membership Type: @Model.Customer.MembershipType.Name</li>
+
+    @if (Model.Customer.Birthdate.HasValue)
+    {
+        <li>Birthdate: @String.Format("{0:MM/dd/yyyy}", Model.Customer.Birthdate)</li>
+    }
+</ul>
+
