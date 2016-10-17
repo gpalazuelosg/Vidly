@@ -80,6 +80,24 @@ annotation from Mosh's ASP.NET MVC course
 	Update-Database
 	
 
+-----
+running following commands to restore migrations to a previous point in time:
+PM> get-migrations
+Retrieving migrations that have been applied to the target database.
+201610170745128_PopulateMembershipTypes1
+201610170739342_AddMembershipType1
+201610170704132_ApplyAnnotationsToCustomerName
+201610170650179_PopulateMembershipTypes
+201610170643201_AddMembershipType
+201610170636043_AddIsSubscribedToCustomer
+201610170506214_InitialModel
+PM> Update-Database -TargetMigration ApplyAnnotationsToCustomerName
+Specify the '-Verbose' flag to view the SQL statements being applied to the target database.
+Reverting migrations: [201610170745128_PopulateMembershipTypes1, 201610170739342_AddMembershipType1].
+Reverting explicit migration: 201610170745128_PopulateMembershipTypes1.
+Reverting explicit migration: 201610170739342_AddMembershipType1.
+PM> Update-Database -TargetMigration ApplyAnnotationsToCustomerName
+
 
 
 	
