@@ -68,7 +68,16 @@ annotation from Mosh's ASP.NET MVC course
 	second command updates the database, which in this case will run the SQL scripts to create the Types
 
 	
+- so, on this class, Overriding EF Conventions, we see how to add the "using" statement to properly include data annotations on the Customer model class and the "[Required]" annotation to the Name field on the Customer model class.
 
+	[Required]
+	[StringLength(255)]
+	
+		THEN run new migration statement
+	add-migration ApplyAnnotationsToCustomerName
+	
+		AND
+	Update-Database
 	
 
 
