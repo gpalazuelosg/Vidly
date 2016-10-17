@@ -10,12 +10,12 @@ using Vidly.ViewModels;
 
 namespace Vidly.Controllers
 {
-    public class CustomerController : Controller
+    public class CustomersController : Controller
     {
         private ApplicationDbContext _context;
 
 
-        public CustomerController()
+        public CustomersController()
         {
             _context = new ApplicationDbContext();
         }
@@ -36,6 +36,13 @@ namespace Vidly.Controllers
             };
 
             return View(viewModel);
+        }
+
+
+        [HttpPost]
+        public ActionResult Create(NewCustomerViewModel viewModel)
+        {
+            return View();
         }
 
 
