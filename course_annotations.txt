@@ -57,7 +57,19 @@ annotation from Mosh's ASP.NET MVC course
 	the database is updated again, more important: no errors as this was an small change to the model classes and tables
 
 
-- 
+- then, to show how to seed PRIME values for Types, we will create a migration to create these types using the following commands:
+
+	add-migration PopulateMembershipTypes
+		AND
+	update-database
+	
+	
+	this creates a new  .CS file giving us the chance the enter inclusive raw SQL statements against the database. Again, this is used for PRIME data in our model.
+	second command updates the database, which in this case will run the SQL scripts to create the Types
+
+	
+
+	
 
 
 
