@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -80,7 +81,7 @@ namespace Vidly.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public ActionResult Edit(int Id)
+        public ActionResult Edit_old(int Id)
         {
             return Content("id = " + Id);
         }
@@ -106,6 +107,66 @@ namespace Vidly.Controllers
 
         }
 
+
+        public ActionResult New()
+        {
+            var genres = _context.Genres.ToList();
+
+            var viewModel = new MovieFormViewModel()
+            {
+                Genres = genres
+            };
+
+            return View("MovieForm", viewModel);
+        }
+
+
+        public ActionResult Edit(int Id)
+        {
+            var movie = _context.Movies.SingleOrDefault(m => m.Id == Id);
+
+            if (movie == null)
+                return HttpNotFound();
+
+            var viewModel = new MovieFormViewModel()
+            {
+                Movie = movie
+                , Genres = _context.Genres.ToList()
+            };
+
+            return View("MovieForm", viewModel);
+        }
+
+
+        public ActionResult Save(MovieFormViewModel viewModel)
+        {
+
+            if (viewModel.Movie.Id == 0)
+            { 
+                viewModel.Movie.DateAdded = System.DateTime.Now;
+                _context.Movies.Add(viewModel.Movie);
+            }
+            else
+            {
+                var movieInDb = _context.Movies.SingleOrDefault(m => m.Id == viewModel.Movie.Id);
+
+                movieInDb.Name = viewModel.Movie.Name;
+                movieInDb.ReleaseDate = viewModel.Movie.ReleaseDate;
+                movieInDb.GenreId = viewModel.Movie.GenreId;
+                movieInDb.NumberInStock = viewModel.Movie.NumberInStock;
+            }
+
+            try
+            {
+                _context.SaveChanges();
+            }
+            catch (DbEntityValidationException ex)
+            {
+                Console.WriteLine(ex);
+            }
+
+            return RedirectToAction("Index", "Movies"); ;
+        }
 
 
         /*
