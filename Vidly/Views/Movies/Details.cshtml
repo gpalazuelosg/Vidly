@@ -6,3 +6,12 @@
 
 <h2>@Model.Movie.Name</h2>
 
+<ul>
+    <li>Genre: @Model.Movie.Genre.Name</li>
+
+    <li>Release Date: @String.Format("{0:dddd, MMMM d, yyyy}", Model.Movie.ReleaseDate)</li>
+
+    <li>Date Added: @String.Format("{0:dddd, MMMM d, yyyy}", Model.Movie.DateAdded)</li>
+
+    <li>Number in Stock: @Model.Movie.NumberInStock</li>
+</ul>

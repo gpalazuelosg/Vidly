@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -10,6 +11,20 @@ namespace Vidly.Controllers
 {
     public class MoviesController : Controller
     {
+        private ApplicationDbContext _context;
+
+
+        public MoviesController()
+        {
+            _context = new ApplicationDbContext();
+        }
+
+
+        protected override void Dispose(bool disposing)
+        {
+            _context.Dispose();
+        }
+
 
         /*
          <Action Results>
@@ -74,12 +89,14 @@ namespace Vidly.Controllers
         // movies
         public ActionResult Index()
         {
-            var movies = new List<Movie>
-            {
-                new Movie { Id= 1, Name = "Shrek!" },
-                new Movie { Id= 2, Name = "Wall-e" }
-            };
+            //var movies = new List<Movie>
+            //{
+            //    new Movie { Id= 1, Name = "Shrek!" },
+            //    new Movie { Id= 2, Name = "Wall-e" }
+            //};
 
+            var movies = _context.Movies.Include(c => c.Genre);
+            
             var viewModel = new MoviesViewModel
             {
                 Movies = movies
@@ -113,17 +130,23 @@ namespace Vidly.Controllers
 
         public ActionResult Details(int Id)
         {
-            var name = "";
+            //var name = "";
 
-            if (Id != 1 && Id != 2)
-            {
+            //if (Id != 1 && Id != 2)
+            //{
+            //    return HttpNotFound();
+            //}
+
+            //name = Id == 1 ? "Shrek!" : "Wall-e";
+
+            //var movie = new Movie() { Id = Id, Name = name };
+
+
+            var movie = _context.Movies.Include(c => c.Genre).SingleOrDefault(m => m.Id == Id);
+
+            if (movie == null)
                 return HttpNotFound();
-            }
-
-            name = Id == 1 ? "Shrek!" : "Wall-e";
-
-            var movie = new Movie() { Id = Id, Name = name };
-
+            
 
             var viewModel = new MoviesDetailsViewModel();
 

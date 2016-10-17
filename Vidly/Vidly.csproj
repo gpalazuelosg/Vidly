@@ -203,9 +203,30 @@
     <Compile Include="Migrations\201610170843053_AddBirthdateToCustomer.Designer.cs">
       <DependentUpon>201610170843053_AddBirthdateToCustomer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201610170858177_AddMovieEntityToModel.cs" />
+    <Compile Include="Migrations\201610170858177_AddMovieEntityToModel.Designer.cs">
+      <DependentUpon>201610170858177_AddMovieEntityToModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610170905127_AddGenreToModel.cs" />
+    <Compile Include="Migrations\201610170905127_AddGenreToModel.Designer.cs">
+      <DependentUpon>201610170905127_AddGenreToModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610170906250_PopulateGenres.cs" />
+    <Compile Include="Migrations\201610170906250_PopulateGenres.Designer.cs">
+      <DependentUpon>201610170906250_PopulateGenres.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610170922487_AddManyFieldsAndAnnotationsToMovieEntityModel.cs" />
+    <Compile Include="Migrations\201610170922487_AddManyFieldsAndAnnotationsToMovieEntityModel.Designer.cs">
+      <DependentUpon>201610170922487_AddManyFieldsAndAnnotationsToMovieEntityModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610170931262_AddReleaseDateToMovieEntityModel.cs" />
+    <Compile Include="Migrations\201610170931262_AddReleaseDateToMovieEntityModel.Designer.cs">
+      <DependentUpon>201610170931262_AddReleaseDateToMovieEntityModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MembershipType.cs" />
@@ -313,6 +334,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201610170843053_AddBirthdateToCustomer.resx">
       <DependentUpon>201610170843053_AddBirthdateToCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610170858177_AddMovieEntityToModel.resx">
+      <DependentUpon>201610170858177_AddMovieEntityToModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610170905127_AddGenreToModel.resx">
+      <DependentUpon>201610170905127_AddGenreToModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610170906250_PopulateGenres.resx">
+      <DependentUpon>201610170906250_PopulateGenres.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610170922487_AddManyFieldsAndAnnotationsToMovieEntityModel.resx">
+      <DependentUpon>201610170922487_AddManyFieldsAndAnnotationsToMovieEntityModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610170931262_AddReleaseDateToMovieEntityModel.resx">
+      <DependentUpon>201610170931262_AddReleaseDateToMovieEntityModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
